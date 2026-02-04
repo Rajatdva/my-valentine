@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For Madam jiii 💕</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Georgia', serif;
+            text-align: center;
+            background: #fff0f5;
+            overflow-x: hidden;
+        }
+
+        /* ===== FALLING PETALS ===== */
+        .petal {
+            position: fixed;
+            top: -50px;
+            font-size: 24px;
+            animation: fall linear infinite;
+            z-index: 999;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(900px) rotate(360deg); opacity: 0; }
+        }
+
+        /* ===== PAGE 1 ===== */
+        #page1 {
+            height: 100vh;
+            background: radial-gradient(circle, #ffe6f0, #ffd1dc, #ffb6c1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        h1 {
+            color: #b0005a;
+            font-size: 40px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+        }
+
+        .buttons button {
+            font-size: 20px;
+            padding: 12px 28px;
+            margin: 12px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0px 6px 15px rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+
+        #yes {
+            background: linear-gradient(45deg, #ff4081, #ff79a6);
+            color: white;
+        }
+
+        #yes:hover {
+            transform: scale(1.1);
+        }
+
+        #no {
+            background-color: #ddd;
+            position: absolute;
+        }
+
+        /* ===== PAGE 2 ===== */
+        #page2 {
+            display: none;
+            padding: 40px 20px;
+            background: linear-gradient(180deg, #fff5f8, #ffe6f0);
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .box-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 35px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .val-box {
+            background: linear-gradient(135deg, #ffd1dc, #ffb6c1);
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #b0005a;
+            cursor: pointer;
+            box-shadow: 0px 8px 20px rgba(0,0,0,0.25);
+            margin: auto;
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            overflow: hidden;
+            position: relative;
+            backdrop-filter: blur(5px);
+        }
+
+        .val-box::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            width: 140px;
+            height: 40px;
+            background: rgba(255,255,255,0.6);
+            transform: rotate(-10deg);
+            filter: blur(3px);
+        }
+
+        .val-box:hover {
+            transform: scale(1.08);
+        }
+
+        .val-box img {
+            display: none;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-top: 8px;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+        }
+
+        #boxMessage {
+            margin-top: 40px;
+            font-size: 20px;
+            color: #b0005a;
+            background: white;
+            padding: 22px;
+            border-radius: 20px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+            font-family: "Comic Sans MS", cursive;
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+            border-left: 6px solid pink;
+            border-right: 6px solid pink;
+        }
+
+        /* ===== PAGE 3 ===== */
+        #page3 {
+            display: none;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffe4e1, #ffb6c1);
+            padding-top: 60px;
+        }
+
+        .gift-container {
+            display: flex;
+            justify-content: center;
+            gap: 55px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .gift {
+            background: linear-gradient(135deg, #ff91a4, #ffb6c1);
+            padding: 22px;
+            border-radius: 20px;
+            font-size: 18px;
+            width: 180px;
+            cursor: pointer;
+            box-shadow: 0px 6px 15px rgba(0,0,0,0.25);
+            transition: transform 0.3s;
+            border: 3px solid white;
+        }
+
+        .gift:hover {
+            transform: scale(1.1);
+        }
+
+        .gift-card {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 182, 193, 0.95);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            z-index: 999;
+        }
+
+        .gift-card-content {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            max-width: 500px;
+            box-shadow: 0px 6px 18px rgba(0,0,0,0.3);
+            font-size: 20px;
+            line-height: 1.6;
+            border: 3px solid pink;
+            font-family: "Comic Sans MS", cursive;
+        }
+
+        .close-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background: #ff4081;
+            color: white;
+            cursor: pointer;
+        }
+
+        .footer-note {
+            margin-top: 70px;
+            font-size: 18px;
+            color: #b0005a;
+            font-style: italic;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+</audio>
+
+<!-- ===== PAGE 1 ===== -->
+<div id="page1">
+    <h1>Madam jiii… Will you be my Valentine? 💘</h1>
+    <div class="buttons">
+        <button id="yes" onclick="goToPage2(); playMusic(); startPetals()">Yes 💖</button>
+        <button id="no" onmouseover="moveButton()">No 😢</button>
+    </div>
+</div>
+
+<!-- ===== PAGE 2 ===== -->
+<div id="page2">
+    <h1>Your Valentine Week 💕</h1>
+
+    <div class="box-container">
+
+        <div class="val-box" onclick="showMsg(1)">Kiss Day 💋</div>
+        <div class="val-box" onclick="showMsg(2)">Hug Day 🤗</div>
+        <div class="val-box" onclick="showMsg(3)">Teddy Day 🧸</div>
+        <div class="val-box" onclick="showMsg(4)">Chocolate Day 🍫</div>
+
+        <div class="val-box" onclick="showMsg(5)">
+            Promise Day 🤝
+            <img id="img5" src="promise.jpg">
+        </div>
+
+        <div class="val-box" onclick="showMsg(6)">
+            Rose Day 🌹
+            <img id="img6" src="rose.jpg">
+        </div>
+
+        <div class="val-box" onclick="showMsg(7)">
+            Propose Day 💍
+            <img id="img7" src="propose.jpg">
+        </div>
+
+        <div class="val-box" onclick="showMsg(8)">Valentine’s Day 💖</div>
+
+    </div>
+
+    <div id="boxMessage">
+        Click on any day to reveal a message 💕
+    </div>
+
+    <p style="margin-top:40px; font-size:18px;">
+        Since you agreed to be my Valentine…  
+        click below to collect your special gift 🎁
+    </p>
+
+    <button onclick="goToPage3()"
+        style="padding:12px 25px; font-size:18px; border:none; border-radius:20px; background:#ff4081; color:white; cursor:pointer;">
+        Click to Claim Your Gift ➡️
+    </button>
+</div>
+
+<!-- ===== PAGE 3 ===== -->
+<div id="page3">
+    <h1>Your Valentine Gift 🎁</h1>
+
+    <div class="gift-container">
+        <div class="gift" onclick="openGift(1)">🎁 Gift 1</div>
+        <div class="gift" onclick="openGift(2)">🎁 Gift 2</div>
+        <div class="gift" onclick="openGift(3)">🎁 Gift 3</div>
+    </div>
+
+    <div class="footer-note">
+        Thank you so much, my baba, for being in my life.  
+        You are my everything, today, tomorrow, and forever 💕
+    </div>
+</div>
+
+<!-- GIFT CARDS -->
+<div id="gift1" class="gift-card">
+    <div class="gift-card-content">
+        <h2>🎁 Gift 1</h2>
+        <p>
+        A lifetime of gentle, sweet kisses —  
+        little reminders that you are my favourite person,  
+        today, tomorrow, and forever. 😘
+        </p>
+        <button class="close-btn" onclick="closeGift()">Close 💖</button>
+    </div>
+</div>
+
+<div id="gift2" class="gift-card">
+    <div class="gift-card-content">
+        <h2>🎁 Gift 2</h2>
+        <p>
+        A lifetime wrapped in my love, care, and warmth —  
+        you in my heart today, tomorrow, and always. ♾️
+        </p>
+        <button class="close-btn" onclick="closeGift()">Close 💖</button>
+    </div>
+</div>
+
+<div id="gift3" class="gift-card">
+    <div class="gift-card-content">
+        <h2>🎁 Gift 3</h2>
+        <p>
+        Endless warm cuddles — safe, comforting,  
+        and wrapped in all my love for you. 🥰
+        </p>
+        <button class="close-btn" onclick="closeGift()">Close 💖</button>
+    </div>
+</div>
+
+<script>
+function moveButton() {
+    var x = Math.random() * (window.innerWidth - 100);
+    var y = Math.random() * (window.innerHeight - 100);
+    document.getElementById("no").style.left = x + "px";
+    document.getElementById("no").style.top = y + "px";
+}
+
+function playMusic() {
+    document.getElementById("bgMusic").play();
+}
+
+function startPetals() {
+    setInterval(() => {
+        let petal = document.createElement("div");
+        petal.innerHTML = "🌸";
+        petal.className = "petal";
+        petal.style.left = Math.random() * window.innerWidth + "px";
+        petal.style.animationDuration = (Math.random() * 3 + 3) + "s";
+        document.body.appendChild(petal);
+
+        setTimeout(() => petal.remove(), 5000);
+    }, 400);
+}
+
+function goToPage2() {
+    document.getElementById("page1").style.display = "none";
+    document.getElementById("page2").style.display = "block";
+}
+
+function goToPage3() {
+    document.getElementById("page2").style.display = "none";
+    document.getElementById("page3").style.display = "block";
+}
+
+function openGift(num) {
+    document.getElementById("gift" + num).style.display = "flex";
+}
+
+function closeGift() {
+    document.getElementById("gift1").style.display = "none";
+    document.getElementById("gift2").style.display = "none";
+    document.getElementById("gift3").style.display = "none";
+}
+
+function showMsg(day) {
+
+    document.querySelectorAll(".val-box img").forEach(img => img.style.display = "none");
+
+    if (day == 5) document.getElementById("img5").style.display = "block";
+    if (day == 6) document.getElementById("img6").style.display = "block";
+    if (day == 7) document.getElementById("img7").style.display = "block";
+
+    let messages = {
+        1: "You know how much I love kissing you and I want to kiss you very badly now 🥺💋",
+        2: "It’s my favourite — I always want to hug you after your long, hectic day 🤗",
+        3: "You are my cute teddy bear and I will always protect you 🧸",
+        4: "Though chocolate isn’t good for health… I will buy you KitKats forever 🍫",
+        5: "I promise I will never leave your hand and will always be there for you. I’ll try my best to make you happy every single day 🤝",
+        6: "Baba, you love flowers a lot — and I will always give you flowers and take care of every little thing you like 🌹",
+        7: "This is not the actual propose day — you will love the day when I propose to you properly 💍",
+        8: "Baba honestly speaking I don’t want to celebrate just this Valentine’s Day… I want to celebrate the day we will marry, our anniversary, the day we get pregnant, when we become parents, when we build our own house, buy our own car — every small and big thing till my last breath. I love you today, tomorrow and forever ♾️"
+    };
+
+    document.getElementById("boxMessage").innerHTML = messages[day];
+}
+</script>
+
+</body>
+</html>
